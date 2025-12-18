@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Snowflake">
+  <title>Snowflake</title>
+  <defs>
+    <radialGradient id="g" cx="32" cy="24" r="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#e6fbff"/>
+      <stop offset="60%" stop-color="#7fdfff"/>
+      <stop offset="100%" stop-color="#00aaff"/>
+    </radialGradient>
+    <filter id="f" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#005f9e" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <!-- background circle -->
+  <circle cx="32" cy="32" r="30" fill="url(#g)" />
+
+  <!-- snowflake lines -->
+  <g stroke="#ffffff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#f)">
+    <path d="M32 6v12"/>
+    <path d="M32 58V46"/>
+    <path d="M6 32h12"/>
+    <path d="M58 32H46"/>
+    <path d="M12 12l10 10"/>
+    <path d="M52 52l-10-10"/>
+    <path d="M12 52l10-10"/>
+    <path d="M52 12l-10 10"/>
+  </g>
+
+  <!-- center accent -->
+  <circle cx="32" cy="32" r="6" fill="#ffffff" opacity="0.95" />
+</svg>
