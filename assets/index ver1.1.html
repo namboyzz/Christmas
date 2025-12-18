@@ -4,15 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Magic Christmas - Final Clean</title>
-    <link rel="icon" href="Mê Ry Chí Mớt/favicon-64.png" type="image/png" sizes="64x64">
-    <link rel="icon" href="Mê Ry Chí Mớt/snowflake.svg" type="image/svg+xml">
+
+    <!-- Recommended: put favicons in a simple ascii path (e.g., assets/favicons/) -->
+    <link rel="icon" href="./assets/favicons/favicon-64.png" type="image/png" sizes="64x64">
+    <link rel="icon" href="./assets/favicons/favicon.svg" type="image/svg+xml">
+    <link rel="shortcut icon" href="./favicon.ico">
+
     <style>
         body {
             margin: 0;
             overflow: hidden;
             background-color: #000000;
             font-family: 'Segoe UI', sans-serif;
-            background-image: url('/Mê Ry Chí Mớt/image4.jpeg');
+
+            /* Use a relative path (no leading slash) and safe folder name.
+               If you can't rename the folder, use URL-encoded name instead. */
+            background-image: url('./assets/images/image4.jpeg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
