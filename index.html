@@ -272,7 +272,8 @@
         }
 
         function createPhotos() {
-            const geo = new THREE.PlaneGeometry(8, 8);
+            // slightly larger photo planes so they look bigger when orbiting/exploding
+            const geo = new THREE.PlaneGeometry(10, 10);
             const borderGeo = new THREE.PlaneGeometry(9, 9); 
             const borderMat = new THREE.MeshBasicMaterial({ color: 0xFFD700 }); 
 
@@ -487,11 +488,13 @@
                     mesh.position.lerp(new THREE.Vector3(x, y, z), 0.1);
                     mesh.lookAt(camera.position);
                     if (z > maxZ) { maxZ = z; bestIdx = i; }
-                    if (z > 5) { 
-                        const ds = 1.0 + (z/CONFIG.photoOrbitRadius)*0.8; 
-                        mesh.scale.lerp(new THREE.Vector3(ds, ds, ds), 0.1);
+                    if (z > 5) {
+                        // larger emphasis for the front-most photos when exploding
+                        const ds = 1.2 + (z/CONFIG.photoOrbitRadius) * 1.1;
+                        mesh.scale.lerp(new THREE.Vector3(ds, ds, ds), 0.12);
                     } else {
-                        mesh.scale.lerp(new THREE.Vector3(0.6, 0.6, 0.6), 0.1);
+                        // keep background photos noticeably visible
+                        mesh.scale.lerp(new THREE.Vector3(0.9, 0.9, 0.9), 0.12);
                     }
                 });
                 selectedIndex = bestIdx;
@@ -501,8 +504,9 @@
                 if (loveImageMesh) loveImageMesh.visible = false;
                 photoMeshes.forEach((mesh, i) => {
                     if (i === selectedIndex) {
-                        mesh.position.lerp(new THREE.Vector3(0, 0, 60), 0.1);
-                        mesh.scale.lerp(new THREE.Vector3(5, 5, 5), 0.1);
+                        mesh.position.lerp(new THREE.Vector3(0, 0, 60), 0.12);
+                        // make the selected photo pop larger when focused
+                        mesh.scale.lerp(new THREE.Vector3(6, 6, 6), 0.12);
                         mesh.lookAt(camera.position); mesh.rotation.z = 0;
                     } else {
                         mesh.scale.lerp(new THREE.Vector3(0,0,0), 0.1);
